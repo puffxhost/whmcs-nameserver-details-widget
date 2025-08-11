@@ -33,7 +33,7 @@ Ideal for web hosting companies who want to provide their customers quick access
 <h2>📂 Installation Guide</h2>
 <ol>
   <li>Download or clone this repository:
-    <pre><code>git clone https://github.com/YourUsername/whmcs-server-info-widget.git</code></pre>
+    <pre><code>git clone https://github.com/puffxhost/whmcs-server-info-widget.git</code></pre>
   </li>
   <li>Upload the file <code>server-info.php</code> to:
     <pre><code>/includes/hooks/</code></pre>
