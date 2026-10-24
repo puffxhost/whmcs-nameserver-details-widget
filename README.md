@@ -86,7 +86,7 @@ Domain: minignpower.shop
 <ul>
   <li>🌐 Website: <a href="https://puffxhost.com">https://puffxhost.com</a></li>
   <li>📧 Email: <a href="mailto:support@puffxhost.in">support@puffxhost.in</a></li>
-  <li>💬 WhatsApp: <a href="https://wa.me/9186029675673">+91-86029675673</a></li>
+  <li>💬 WhatsApp: <a href="https://wa.me/918602967573">+91 8602967573</a></li>
   <li>🐙 GitHub: <a href="https://github.com/puffxhost">https://github.com/puffxhost</a></li>
 </ul>
 <p>We build premium WHMCS modules, hooks, and payment gateway integrations for hosting providers.</p>
@@ -125,4 +125,15 @@ Fully compatible with WHMCS coding standards and best practices.
   Developed with ❤️ by <strong>Puffx Host</strong>
 </p>
 
+## 🛟 Support & Contact
 
+Need help or want to report an issue?
+
+- 🌐 Website: [puffxhost.com/contact](https://puffxhost.com/contact)
+- 📧 Email: [support@puffxhost.in](mailto:support@puffxhost.in)
+- 📞 Call: [+91 8602967573](https://wa.me/918602967573)
+- 💬 WhatsApp: [+91 7354336624](https://wa.me/917354336624)
+
+## ⭐️ Give a Star
+
+If you found this project useful, please consider giving it a star on GitHub to support its development.
