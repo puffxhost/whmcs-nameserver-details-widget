@@ -1,139 +1,63 @@
-<h1>WHMCS Server &amp; Service Information Widget Hook</h1>
+# WHMCS Nameserver Details Widget
 
-<p>
-<strong>WHMCS Server &amp; Service Information Widget Hook</strong> is a lightweight yet powerful addon for WHMCS that displays your hosting server details and service credentials directly in the client area homepage. 
-Ideal for web hosting companies who want to provide their customers quick access to essential server configuration and login information without navigating multiple pages.
-</p>
+A small WHMCS hook that puts the current service's login and assigned server details in the client-area sidebar.
 
-<hr>
+## What it does
 
-<h2>🔥 Key Features</h2>
-<ul>
-  <li>Instantly display <strong>Server Information</strong>:
-    <ul>
-      <li>Hostname</li>
-      <li>IP Address</li>
-      <li>Nameserver 1 &amp; Nameserver 2</li>
-    </ul>
-  </li>
-  <li>Show <strong>Service Information</strong>:
-    <ul>
-      <li>Username</li>
-      <li>Password</li>
-      <li>Domain Name</li>
-    </ul>
-  </li>
-  <li>Responsive &amp; clean panel design that blends with any WHMCS template</li>
-  <li>Super easy installation — upload and activate in minutes</li>
-  <li>SEO-friendly &amp; fully WHMCS compliant</li>
-</ul>
+- Reads the server assigned to the service being viewed in WHMCS.
+- Shows the service username and domain, plus the server hostname, IP address, and configured nameservers.
+- Masks the service password by default. The client can reveal it temporarily or copy it with a button.
+- Makes hostname, IP address, and nameserver rows copyable without JavaScript event code in database-backed values.
+- Gives copy feedback without a blocking browser alert, and includes a fallback for browsers without the Clipboard API.
+- Escapes values before placing them in menu labels and skips nameservers that are not configured.
 
-<hr>
+The widget appears on a service details page where WHMCS provides a `service` context. It does not query every service on the client account.
 
-<h2>📂 Installation Guide</h2>
-<ol>
-  <li>Download or clone this repository:
-    <pre><code>git clone https://github.com/puffxhost/whmcs-server-info-widget.git</code></pre>
-  </li>
-  <li>Upload the file <code>server-info.php</code> to:
-    <pre><code>/includes/hooks/</code></pre>
-  </li>
-  <li>Clear the WHMCS template cache:
-    <pre><code>Utilities &gt; System &gt; System Cleanup &gt; Empty Template Cache</code></pre>
-  </li>
-  <li>Login to your client area — the "Server Information" and "Service Information" widget will be visible on the homepage.</li>
-</ol>
+## Requirements
 
-<hr>
+- WHMCS 8 or later
+- PHP 7.4 or later
+- A client service assigned to a WHMCS server
 
-<h2>🛠 System Requirements</h2>
-<ul>
-  <li>WHMCS v8 or later</li>
-  <li>PHP 7.4 or above</li>
-  <li>An active hosting service assigned to the client</li>
-</ul>
+## Install
 
-<hr>
+1. Download or clone this repository:
 
-<h2>📸 Example Output</h2>
-<h3>Server Information</h3>
-<pre><code>Hostname: x-server.in
-IP Address: 95.216.125.167
-Nameserver 1: ns1.puffxhost.in
-Nameserver 2: ns2.puffxhost.in
-</code></pre>
+   ```sh
+   git clone https://github.com/puffxhost/whmcs-nameserver-details-widget.git
+   ```
 
-<h3>Service Information</h3>
-<pre><code>Username: minignpo
-Password: J}#;MpaGama|
-Domain: minignpower.shop
-</code></pre>
+2. Upload [`includes/hooks/server-info.php`](includes/hooks/server-info.php) to your WHMCS installation's `includes/hooks/` directory.
+3. In WHMCS, empty the template cache under **Utilities → System → System Cleanup → Empty Template Cache**.
+4. Sign in to a client account, open **Services → My Services**, then view a service that has a server assigned. The information panels appear in the client-area sidebar.
 
-<hr>
+## Example
 
-<h2>📄 License</h2>
-<p>This project is licensed under the <a href="LICENSE">MIT License</a> — free to use, modify, and distribute with proper attribution.</p>
+Values below are documentation placeholders. The widget reads live values from the service and its assigned server in WHMCS.
 
-<hr>
+```text
+Service Information
+Username: example_user
+Password: ••••••••  [Show] [Copy]
+Domain: example.net
 
-<h2>👨‍💻 Author</h2>
-<p>Developed with ❤️ by <a href="https://puffxhost.com">Puffx Host</a></p>
+Server Information
+Hostname: host.example.net
+IP Address: 192.0.2.10
+Nameserver 1: ns1.example.net  (click to copy)
+Nameserver 2: ns2.example.net  (click to copy)
+```
 
-<hr>
+## Password handling
 
-<h2>📬 Contact &amp; Support</h2>
-<p>Need help or custom WHMCS development? Get in touch:</p>
-<ul>
-  <li>🌐 Website: <a href="https://puffxhost.com">https://puffxhost.com</a></li>
-  <li>📧 Email: <a href="mailto:support@puffxhost.in">support@puffxhost.in</a></li>
-  <li>💬 WhatsApp: <a href="https://wa.me/918602967573">+91 8602967573</a></li>
-  <li>🐙 GitHub: <a href="https://github.com/puffxhost">https://github.com/puffxhost</a></li>
-</ul>
-<p>We build premium WHMCS modules, hooks, and payment gateway integrations for hosting providers.</p>
+The password is hidden visually until the client selects **Show**. WHMCS still has to send the password to that authenticated client-area page so the reveal and copy controls can work; masking is a privacy convenience, not a security boundary. Use HTTPS, restrict access to the WHMCS client area, and do not add real customer credentials to documentation, screenshots, or source control.
 
-<hr>
+If the service password is empty or cannot be decrypted, the widget displays **Not available** and keeps the rest of the service details working.
 
-<h2>🙌 Contributing</h2>
-<p>
-We welcome contributions from the community!<br>
-Fork the repo, make your changes, and submit a pull request to improve this project.
-</p>
+## Contributing
 
-<hr>
+Please open an issue or pull request with the WHMCS version and theme involved. Never include customer credentials, private IPs, or production server details in examples.
 
-<h2>⭐️ Give a Star</h2>
-<p>If you find this WHMCS hook useful, please give it a ⭐️ on GitHub to support its growth and future updates.</p>
+## License
 
-<hr>
-
-<h2>🔗 About</h2>
-<p>
-This addon is part of the <strong>Puffx WHMCS Module Series</strong> — designed for performance, security, and ease of use.<br>
-Fully compatible with WHMCS coding standards and best practices.
-</p>
-
-<hr>
-
- <h2>🧠 Developed By</h2>
-  <p>
-    <strong>Nitin Mehta</strong><br>
-    Official site: <a href="https://puffxhost.com" target="_blank">https://puffxhost.com</a>
-  </p>
-
-  <hr>
-<p align="center">
-  Developed with ❤️ by <strong>Puffx Host</strong>
-</p>
-
-## 🛟 Support & Contact
-
-Need help or want to report an issue?
-
-- 🌐 Website: [puffxhost.com/contact](https://puffxhost.com/contact)
-- 📧 Email: [support@puffxhost.in](mailto:support@puffxhost.in)
-- 📞 Call: [+91 8602967573](https://wa.me/918602967573)
-- 💬 WhatsApp: [+91 7354336624](https://wa.me/917354336624)
-
-## ⭐️ Give a Star
-
-If you found this project useful, please consider giving it a star on GitHub to support its development.
+MIT. See [LICENSE](LICENSE).
